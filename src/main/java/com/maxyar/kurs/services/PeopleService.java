@@ -1,4 +1,4 @@
-package com.maxyar.kurs.servises;
+package com.maxyar.kurs.services;
 
 import com.maxyar.kurs.entities.People;
 import com.maxyar.kurs.repository.PeopleCrudRepository;
@@ -16,5 +16,20 @@ public class PeopleService {
     @Transactional
     public void testRep(){
         Optional<People> people = peopleCrudRepository.findById(1);
+    }
+
+    @Transactional
+    public void addPeople(People people){
+        People savedpeople = peopleCrudRepository.save(people);
+    }
+
+    @Transactional
+    public void deletePeople(People people){
+        peopleCrudRepository.delete(people);
+    }
+
+    @Transactional
+    public void editPeople(People people){
+        People updatedPeople = peopleCrudRepository.save(people);
     }
 }
