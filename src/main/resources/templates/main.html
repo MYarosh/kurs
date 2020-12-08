@@ -21,54 +21,67 @@
 </div>
 <div class="main">
 
-
     <form id="main-form"  method="get">
+        <h1>Работа с данными</h1>
+        <h1>Какую таблицу выбираем?</h1>
 
-        <h1>Выберите Таблицу</h1>
+                <label>
+                    <input type="radio" name="table" value="Человек_Установщик">Человек_Установщик<br>
+                </label>
+                <label>
+                    <input type="radio" name="table" value="Устройства_Передатчики">Устройства_Передатчики<br>
+                </label>
+                    <label>
+                    <input type="radio" name="table" value="Устройства_Приемники">Устройства_Приемники<br>
+                    </label>
 
-        <label>
-            <input type="radio" name="table" value="Человек_Установщик">Человек_Установщик<br>
-        </label>
-        <label>
-            <input type="radio" name="table" value="Устройства_Передатчики">Устройства_Передатчики<br>
-        </label>
-        <label>
-            <input type="radio" name="table" value="Устройства_Приемники">Устройства_Приемники<br>
-        </label>
-        <label>
-            <input type="radio" name="table" value="Место_Расположения">Место_Расположения<br>
-        </label>
-        <label>
-            <input type="radio" name="table" value="Организация">Организация<br>
-        </label>
-        <label>
-            <input type="radio" name="table" value="Страны">Страны<br>
-        </label>
-        <label>
-            <input type="radio" name="table" value="Наблюдаемый">Наблюдаемый<br>
-        </label>
-        <label>
-            <input type="radio" name="table" value="Типы_организаций">Типы_организаций<br>
-        </label>
-        <label>
-            <input type="radio" name="table" value="Место_установки">Место_установки<br>
-        </label>
-        <label>
-            <input type="radio" name="table" value="Типы_установленных_устройств">Типы_установленных_устройств<br>
-        </label>
+                <label>
+                    <input type="radio" name="table" value="Место_Расположения">Место_Расположения<br>
+                    </label>
+                <label>
+                    <input type="radio" name="table" value="Организация">Организация<br>
+                </label>
+
+                <label>
+                    <input type="radio" name="table" value="Страны">Страны<br>
+                </label>
+                    <label>
+                    <input type="radio" name="table" value="Наблюдаемый">Наблюдаемый<br>
+                    </label>
+                        <label>
+                    <input type="radio" name="table" value="Типы_организаций">Типы_организаций<br>
+                        </label>
+                            <label>
+                    <input type="radio" name="table" value="Место_установки">Место_установки<br>
+                            </label>
+                                <label>
+                    <input type="radio" name="table" value="Типы_установленных_устройств">Типы_установленных_устройств<br>
+                                </label>
+
+
+
         <p class="warn-radio" hidden>Не выбрано ни одной таблицы</p>
 
 
 
-        <button>Показать</button>
-        <button>Редактирование</button>
-        <button>Удаление</button>
+        <button class="index_button">Показать Данные</button>
+
+
 
 
     </form>
+
+</div>
+
+<div >
+    <iframe name="result_frame" height="120" width="700" id="result_frame"
+            allowtransparenc frameborder="no" scrolling="no" seamless style="display:none"></iframe>
+
 </div>
 
 
+
+</div>
 
 </body>
 </html>
