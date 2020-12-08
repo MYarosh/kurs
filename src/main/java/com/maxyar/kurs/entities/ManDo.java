@@ -1,23 +1,26 @@
 package com.maxyar.kurs.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Человек_установщик")
+@Table(name = "человек_установщик")
 public class ManDo {
     @Id
-    @OneToOne
-    @JoinColumn(name = "ID_человека")
-    private People id;
-    @Column(name = "Должность")
+    @Column(name = "id_человека")
+    private Integer id;
+    @Column(name = "должность")
     private String job;
     @ManyToOne
-    @JoinColumn(name = "Страна")
+    @JoinColumn(name = "страна")
     private Country country;
     @ManyToOne
-    @JoinColumn(name = "Организация")
+    @JoinColumn(name = "организация")
     private Company company;
 }

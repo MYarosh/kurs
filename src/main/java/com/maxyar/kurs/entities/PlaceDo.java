@@ -1,21 +1,25 @@
 package com.maxyar.kurs.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Место_установки")
+@Table(name = "место_установки")
 public class PlaceDo {
     @Id
-    @Column(name = "ID_места")
+    @Column(name = "id_места")
     @GeneratedValue
     private Integer id;
-    @Column(name = "X")
+    @Column(name = "x")
     private Double x;
-    @Column(name = "Y")
+    @Column(name = "y")
     private Double y;
-    @Column(name = "Z")
+    @Column(name = "z")
     private Double z;
 }

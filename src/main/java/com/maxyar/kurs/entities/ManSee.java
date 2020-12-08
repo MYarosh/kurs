@@ -1,28 +1,31 @@
 package com.maxyar.kurs.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Наблюдаемый")
+@Table(name = "наблюдаемый")
 public class ManSee {
     @Id
-    @OneToOne
-    @JoinColumn(name = "ID_наблюдаемого")
-    private People id;
-    @Column(name = "Должность")
+    @Column(name = "id_наблюдаемого")
+    private Integer id;
+    @Column(name = "должность")
     private String job;
     @ManyToOne
-    @JoinColumn(name = "Организация")
+    @JoinColumn(name = "организация")
     private Company company;
 
     @ManyToMany
-    @JoinTable(name = "Устройства_Наблюдаемый",
-            joinColumns = @JoinColumn(name = "ID_Устройства"),
-            inverseJoinColumns = @JoinColumn(name = "ID_наблюдаемого")
+    @JoinTable(name = "устройства_наблюдаемый",
+            joinColumns = @JoinColumn(name = "id_устройства"),
+            inverseJoinColumns = @JoinColumn(name = "id_наблюдаемого")
     )
     private Collection<GadgetsFrom> gadgets;
 }

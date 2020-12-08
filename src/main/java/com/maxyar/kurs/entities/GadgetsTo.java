@@ -1,28 +1,32 @@
 package com.maxyar.kurs.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Устройства_приемники")
+@Table(name = "устройства_приемники")
 public class GadgetsTo {
     @Id
-    @Column(name = "ID_Приемника")
+    @Column(name = "id_приемника")
     @GeneratedValue
     private Integer id;
 
     @OneToMany
-    @JoinColumn(name = "Устройство_передатчик")
+    @JoinColumn(name = "устройство_передатчик")
     private Collection<GadgetsFrom> gadgets;
 
     @ManyToOne
-    @JoinColumn(name = "Место_расположения")
+    @JoinColumn(name = "место_расположения")
     private PlaceCom place;
 
     @ManyToOne
-    @JoinColumn(name = "Страна")
+    @JoinColumn(name = "страна")
     private Country country;
 }

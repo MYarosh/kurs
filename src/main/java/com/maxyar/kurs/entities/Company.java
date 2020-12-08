@@ -1,26 +1,30 @@
 package com.maxyar.kurs.entities;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Организация")
+@Table(name = "организация")
 public class Company {
     @Id
-    @Column(name = "ID_Организации")
+    @Column(name = "id_организации")
     @GeneratedValue
     private Integer id;
-    @Column(name = "Род_деятельности")
+    @Column(name = "род_деятельности")
     private String function;
-    @Column(name = "Название")
+    @Column(name = "название")
     private String name;
     @ManyToOne
-    @JoinColumn(name = "Страна")
+    @JoinColumn(name = "страна")
     private Country country;
     @ManyToOne
-    @JoinColumn(name = "Тип_организации")
+    @JoinColumn(name = "тип_организации")
     private TypesOfCompanies type;
 }

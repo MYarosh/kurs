@@ -1,25 +1,29 @@
 package com.maxyar.kurs.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Место_расположения")
+@Table(name = "место_расположения")
 public class PlaceCom {
     @Id
-    @Column(name = "ID_места")
+    @Column(name = "id_места")
     @GeneratedValue
     private Integer id;
     @OneToMany
-    @JoinColumn(name = "Организация")
+    @JoinColumn(name = "организация")
     private Collection<Company> company;
-    @Column(name = "X")
+    @Column(name = "x")
     private Double x;
-    @Column(name = "Y")
+    @Column(name = "y")
     private Double y;
-    @Column(name = "Z")
+    @Column(name = "z")
     private Double z;
 }

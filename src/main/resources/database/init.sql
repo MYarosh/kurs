@@ -1,77 +1,77 @@
-CREATE TABLE "Люди"(
-                       "ID_человека" serial PRIMARY KEY,
-                       "Имя" varchar(32) NOT NULL,
-                       "Фамилия" varchar(32) NOT NULL
+create table "люди"(
+                       "id_человека" serial primary key,
+                       "имя" varchar(32) not null,
+                       "фамилия" varchar(32) not null
 );
 
-CREATE TABLE "Страны" (
-                          "Страна" varchar(32) NOT NULL PRIMARY KEY,
-                          "Угроза" varchar(32) NOT NULL
+create table "страны" (
+                          "страна" varchar(32) not null primary key,
+                          "угроза" varchar(32) not null
 );
 
-CREATE TABLE "Типы_установленных_устройств" (
-                                                "Тип_устройства" varchar(32) PRIMARY KEY,
-                                                "Описание" text NOT NULL
+create table "типы_установленных_устройств" (
+                                                "тип_устройства" varchar(32) primary key,
+                                                "описание" text not null
 );
 
-CREATE TABLE "Типы_организаций" (
-                                    "Тип_организации" varchar(32) NOT NULL PRIMARY KEY,
-                                    "Описание" text NOT NULL
+create table "типы_организаций" (
+                                    "тип_организации" varchar(32) not null primary key,
+                                    "описание" text not null
 );
 
-CREATE TABLE "Организация" (
-                               "ID_Организации" serial PRIMARY KEY,
-                               "Страна" varchar(32) REFERENCES "Страны",
-                               "Род_деятельности" varchar(32) NOT NULL,
-                               "Название" varchar(32) NOT NULL,
-                               "Тип_организации" varchar(32) NOT NULL REFERENCES "Типы_организаций"
+create table "организация" (
+                               "id_организации" serial primary key,
+                               "страна" varchar(32) references "страны",
+                               "род_деятельности" varchar(32) not null,
+                               "название" varchar(32) not null,
+                               "тип_организации" varchar(32) not null references "типы_организаций"
 );
 
-CREATE TABLE "Человек_установщик" (
-                                      "ID_человека" integer PRIMARY KEY REFERENCES "Люди",
-                                      "Должность" varchar(32) NOT NULL,
-                                      "Страна" varchar(32) REFERENCES "Страны",
-                                      "Организация" integer REFERENCES "Организация"("ID_Организации")
+create table "человек_установщик" (
+                                      "id_человека" integer primary key references "люди",
+                                      "должность" varchar(32) not null,
+                                      "страна" varchar(32) references "страны",
+                                      "организация" integer references "организация"("id_организации")
 );
 
-CREATE TABLE "Место_установки" (
-                                   "ID_места" serial PRIMARY KEY,
-                                   "X" numeric NOT NULL,
-                                   "Y" numeric NOT NULL,
-                                   "Z" numeric NOT NULL
+create table "место_установки" (
+                                   "id_места" serial primary key,
+                                   "x" numeric not null,
+                                   "y" numeric not null,
+                                   "z" numeric not null
 );
 
-CREATE TABLE "Устройства_передатчики" (
-                                          "ID_Устройства" serial PRIMARY KEY,
-                                          "Модель" varchar(32) NOT NULL,
-                                          "Человек_установщик" integer NOT NULL REFERENCES "Человек_установщик"("ID_человека"),
-                                          "Место_установки" integer REFERENCES "Место_установки"("ID_места"),
-                                          "Тип" varchar(32) REFERENCES "Типы_установленных_устройств"("Тип_устройства"),
-                                          "Частота" numeric NOT NULL
+create table "устройства_передатчики" (
+                                          "id_устройства" serial primary key,
+                                          "модель" varchar(32) not null,
+                                          "человек_установщик" integer not null references "человек_установщик"("id_человека"),
+                                          "место_установки" integer references "место_установки"("id_места"),
+                                          "тип" varchar(32) references "типы_установленных_устройств"("тип_устройства"),
+                                          "частота" numeric not null
 );
 
-CREATE TABLE "Наблюдаемый" (
-                               "ID_наблюдаемого" integer PRIMARY KEY REFERENCES "Люди"("ID_человека"),
-                               "Должность" varchar(32) NOT NULL,
-                               "Организация" integer NOT NULL REFERENCES "Организация"("ID_Организации")
+create table "наблюдаемый" (
+                               "id_наблюдаемого" integer primary key references "люди"("id_человека"),
+                               "должность" varchar(32) not null,
+                               "организация" integer not null references "организация"("id_организации")
 );
 
-CREATE TABLE "Устройства_Наблюдаемый"(
-                                         "ID_Устройства" integer REFERENCES "Устройства_передатчики",
-                                         "ID_наблюдаемого" integer REFERENCES "Наблюдаемый"
+create table "устройства_наблюдаемый"(
+                                         "id_устройства" integer references "устройства_передатчики",
+                                         "id_наблюдаемого" integer references "наблюдаемый"
 );
 
-CREATE TABLE "Место_расположения" (
-                                      "ID_место_расположения" serial PRIMARY KEY,
-                                      "Организация" integer REFERENCES "Организация"("ID_Организации"),
-                                      "X" numeric NOT NULL,
-                                      "Y" numeric NOT NULL,
-                                      "Z" numeric NOT NULL
+create table "место_расположения" (
+                                      "id_место_расположения" serial primary key,
+                                      "организация" integer references "организация"("id_организации"),
+                                      "x" numeric not null,
+                                      "y" numeric not null,
+                                      "z" numeric not null
 );
 
-CREATE TABLE "Устройства_приемники" (
-                                        "ID_Приемника" serial PRIMARY KEY,
-                                        "Устройство_передатчик" integer REFERENCES "Устройства_передатчики"("ID_Устройства"),
-                                        "Место_расположения" integer REFERENCES "Место_расположения"("ID_место_расположения"),
-                                        "Страна" varchar(32) REFERENCES "Страны"
+create table "устройства_приемники" (
+                                        "id_приемника" serial primary key,
+                                        "устройство_передатчик" integer references "устройства_передатчики"("id_устройства"),
+                                        "место_расположения" integer references "место_расположения"("id_место_расположения"),
+                                        "страна" varchar(32) references "страны"
 );
