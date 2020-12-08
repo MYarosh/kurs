@@ -1,21 +1,28 @@
 package com.maxyar.kurs.entities;
 
-import javax.persistence.*;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.Collection;
+
+@Data
 @Entity
 @Table(name = "Устройства_приемники")
 public class GadgetsTo {
     @Id
     @Column(name = "ID_Приемника")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @OneToMany
+    @JoinColumn(name = "Устройство_передатчик")
+    private Collection<GadgetsFrom> gadgets;
 
-    @Column(name = "email")
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "Место_расположения")
+    private PlaceCom place;
 
-    @Column(name = "phone")
-    private String phone;
+    @ManyToOne
+    @JoinColumn(name = "Страна")
+    private Country country;
 }

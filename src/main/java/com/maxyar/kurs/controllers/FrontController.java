@@ -11,4 +11,9 @@ public class FrontController {
         return "index";
     }
 
+    @GetMapping("/Main")
+    public String mainpage() {
+        return "main";
+    }
+
 }
