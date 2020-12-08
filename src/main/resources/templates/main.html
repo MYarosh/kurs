@@ -57,15 +57,44 @@
                                 <label>
                     <input type="radio" name="table" value="Типы_установленных_устройств">Типы_установленных_устройств<br>
                                 </label>
+                     <button  class="index_button" type="submit" disabled name="submit" value="valj"  />
+
+<script>
+
+    $radioButtons.change(function(){
+        var anyRadioButtonHasValue = false;
+
+        // iterate through all radio buttons
+        $radioButtons.each(function(){
+            if(this.checked){
+                // indicate we found a radio button which has a value
+                anyRadioButtonHasValue = true;
+
+                // break out of each loop
+                return false;
+            }
+        });
+
+        // check if we found any radio button which has a value
+        if(anyRadioButtonHasValue){
+            // enable submit button.
+            $("input[name='submit']").removeAttr("disabled");
+        }
+        else{
+            // else is kind of redundant unless you somehow can clear the radio button value
+            $("input[name='submit']").attr("disabled", "");
+        }
+    });
+</script>
 
 
-
-        <p class="warn-radio" hidden>Не выбрано ни одной таблицы</p>
 
 
 
         <button class="index_button">Показать Данные</button>
 
+
+        <button class="index_button">Добавить</button> <button class="index_button">Редактировать</button> <button class="index_button">Удалить</button>
 
 
 
