@@ -30,4 +30,9 @@ public class PlaceComService {
     public void editPlaceCom(PlaceCom placeCom){
         PlaceCom editedPlaceCom = placeComCrudRepository.save(placeCom);
     }
+
+    @Transactional
+    public Iterable<PlaceCom> select(){
+        return placeComCrudRepository.findAll();
+    }
 }

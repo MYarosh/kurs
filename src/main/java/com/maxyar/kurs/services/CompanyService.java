@@ -30,4 +30,9 @@ public class CompanyService {
     public void editCompany(Company company){
         Company editedCompany = companyCrudRepository.save(company);
     }
+
+    @Transactional
+    public Iterable<Company> select(){
+        return companyCrudRepository.findAll();
+    }
 }

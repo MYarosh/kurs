@@ -30,4 +30,9 @@ public class TypesOfGadgetsService {
     public void editTypesOfGadgets(TypesOfGadgets type){
         TypesOfGadgets editedType = typesOfGadgetsCrudRepository.save(type);
     }
+
+    @Transactional
+    public Iterable<TypesOfGadgets> select(){
+        return typesOfGadgetsCrudRepository.findAll();
+    }
 }

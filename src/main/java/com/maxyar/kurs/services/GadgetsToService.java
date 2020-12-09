@@ -30,4 +30,9 @@ public class GadgetsToService {
     public void editGadgetsTo(GadgetsTo gadgetsTo){
         GadgetsTo editedGadgetsTo = gadgetsToCrudRepository.save(gadgetsTo);
     }
+
+    @Transactional
+    public Iterable<GadgetsTo> select(){
+        return gadgetsToCrudRepository.findAll();
+    }
 }

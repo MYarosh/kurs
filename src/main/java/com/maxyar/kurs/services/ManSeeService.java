@@ -30,4 +30,9 @@ public class ManSeeService {
     public void editManSee(ManSee manSee){
         ManSee editedManSee = manSeeCrudRepository.save(manSee);
     }
+
+    @Transactional
+    public Iterable<ManSee> select(){
+        return manSeeCrudRepository.findAll();
+    }
 }

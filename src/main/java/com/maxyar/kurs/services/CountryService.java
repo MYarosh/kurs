@@ -30,4 +30,9 @@ public class CountryService {
     public void editCountry(Country country){
         Country editedCountry = countryCrudRepository.save(country);
     }
+
+    @Transactional
+    public Iterable<Country> select(){
+        return countryCrudRepository.findAll();
+    }
 }

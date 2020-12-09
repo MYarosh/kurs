@@ -32,4 +32,9 @@ public class PeopleService {
     public void editPeople(People people){
         People updatedPeople = peopleCrudRepository.save(people);
     }
+
+    @Transactional
+    public Iterable<People> select(){
+        return peopleCrudRepository.findAll();
+    }
 }

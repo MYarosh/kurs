@@ -30,4 +30,9 @@ public class ManDoService {
     public void editManDo(ManDo manDo){
         ManDo editedManDo = manDoCrudRepository.save(manDo);
     }
+
+    @Transactional
+    public Iterable<ManDo> select(){
+        return manDoCrudRepository.findAll();
+    }
 }

@@ -26,41 +26,41 @@
         <h1>Какую таблицу выбираем?</h1>
 
                 <label>
-                    <input type="radio" name="table" value="Человек_Установщик">Человек_Установщик<br>
+                    <input type="radio" name="table" onclick="listner()" value="Человек_Установщик">Человек_Установщик<br>
                 </label>
                 <label>
-                    <input type="radio" name="table" value="Устройства_Передатчики">Устройства_Передатчики<br>
+                    <input type="radio" name="table" onclick="listner()" value="Устройства_Передатчики">Устройства_Передатчики<br>
                 </label>
                     <label>
-                    <input type="radio" name="table" value="Устройства_Приемники">Устройства_Приемники<br>
+                    <input type="radio" name="table" onclick="listner()" value="Устройства_Приемники">Устройства_Приемники<br>
                     </label>
 
                 <label>
-                    <input type="radio" name="table" value="Место_Расположения">Место_Расположения<br>
+                    <input type="radio" name="table" onclick="listner()" value="Место_Расположения">Место_Расположения<br>
                     </label>
                 <label>
-                    <input type="radio" name="table" value="Организация">Организация<br>
+                    <input type="radio" name="table" onclick="listner()" value="Организация">Организация<br>
                 </label>
 
                 <label>
-                    <input type="radio" name="table" value="Страны">Страны<br>
+                    <input type="radio" name="table" onclick="listner()" value="Страны">Страны<br>
                 </label>
                     <label>
-                    <input type="radio" name="table" value="Наблюдаемый">Наблюдаемый<br>
+                    <input type="radio" name="table" onclick="listner()" value="Наблюдаемый">Наблюдаемый<br>
                     </label>
                         <label>
-                    <input type="radio" name="table" value="Типы_организаций">Типы_организаций<br>
+                    <input type="radio" name="table" onclick="listner()" value="Типы_организаций">Типы_организаций<br>
                         </label>
                             <label>
-                    <input type="radio" name="table" value="Место_установки">Место_установки<br>
+                    <input type="radio" name="table" onclick="listner()" value="Место_установки">Место_установки<br>
                             </label>
                                 <label>
-                    <input type="radio" name="table" value="Типы_установленных_устройств">Типы_установленных_устройств<br>
+                    <input type="radio" name="table" onclick="listner()" value="Типы_установленных_устройств">Типы_установленных_устройств<br>
                                 </label>
-                     <button  class="index_button" type="submit" disabled name="submit" value="valj"  />
+        <button  class="index_button" type="submit" disabled name="submit">valj</button>
 
-<script>
-
+<!--<script>
+    $radioButtons = document.getElementsByName("table");
     $radioButtons.change(function(){
         var anyRadioButtonHasValue = false;
 
@@ -85,7 +85,7 @@
             $("input[name='submit']").attr("disabled", "");
         }
     });
-</script>
+</script>-->
 
 
 
@@ -111,6 +111,11 @@
 
 
 </div>
-
+<script>
+    function listner(){
+        //TODO: Make buttons not disable
+        console.log("Listner works")
+    }
+</script>
 </body>
 </html>

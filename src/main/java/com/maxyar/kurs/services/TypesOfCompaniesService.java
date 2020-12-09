@@ -30,4 +30,9 @@ public class TypesOfCompaniesService {
     public void editTypesOfCompanies(TypesOfCompanies type){
         TypesOfCompanies editedType = typesOfCompaniesCrudRepository.save(type);
     }
+
+    @Transactional
+    public Iterable<TypesOfCompanies> select(){
+        return typesOfCompaniesCrudRepository.findAll();
+    }
 }

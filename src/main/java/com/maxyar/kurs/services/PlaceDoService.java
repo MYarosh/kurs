@@ -30,4 +30,9 @@ public class PlaceDoService {
     public void editPlaceDo(PlaceDo placeDo){
         PlaceDo editedPlaceDo = placeDoCrudRepository.save(placeDo);
     }
+
+    @Transactional
+    public Iterable<PlaceDo> select(){
+        return placeDoCrudRepository.findAll();
+    }
 }
