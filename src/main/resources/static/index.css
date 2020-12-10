@@ -71,6 +71,7 @@ body{
 .index_button{
     margin-top: 20px;
     border-radius: 10px;
+    color: lime;
     border: 2px solid #500062;
     background: #773cb7;
     font-family: cursive;
@@ -96,6 +97,7 @@ body{
     transition-duration: 0.4s;
 }
 .link_style{
+    color: lime;
     text-decoration: none
 }
 .main img {

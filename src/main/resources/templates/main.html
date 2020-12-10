@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+<script src="jquery-3.5.1.js"></script>
 <span id="head-title">
            Шпионские устройства
         </span>
@@ -18,115 +19,113 @@
 <br>
 
 
+<div class="main">
+        <h1>Работа с данными</h1>
+        <h1>Какую таблицу выбираем?</h1>
+            <input type="radio" name="table" value="People">Люди<br/><br/>
+            <input type="radio" name="table" value="ManDo">Человек_Установщик<br/><br/>
+            <input type="radio" name="table" value="GadgetsFrom">Устройства_Передатчики<br/><br/>
+            <input type="radio" name="table" value="GadgetsTo">Устройства_Приемники<br/><br/>
+            <input type="radio" name="table" value="PlaceCom">Место_Расположения<br/><br/>
+            <input type="radio" name="table" value="Company">Организация<br/><br/>
+            <input type="radio" name="table" value="Country">Страны<br/><br/>
+            <input type="radio" name="table" value="ManSee">Наблюдаемый<br/><br/>
+            <input type="radio" name="table" value="TypesOfCompanies">Типы_организаций<br/><br/>
+            <input type="radio" name="table" value="PlaceDo">Место_установки<br/><br/>
+            <input type="radio" name="table" value="TypesOfGadgets">Типы_установленных_устройств<br/><br/>
+
+            <input type="text" id="" placeholder=""><br/><br/>
+        <button id="select" class="index_button" onclick="select();">Показать Данные</button>
+        <button id="add" class="index_button" onclick="add();">Добавить</button>
+        <button id="update" class="index_button" onclick="update();">Редактировать</button>
+        <button id="delete" class="index_button" onclick="del();">Удалить</button>
+
+    <button class="index_button"><a class ="link_style" href="/">Назад</a></button>
+
+
 </div>
 <div class="main">
 
-    <form id="main-form"  method="get">
-        <h1>Работа с данными</h1>
-        <h1>Какую таблицу выбираем?</h1>
+</div>
 
-          <!--      <label>
-                    <input type="radio" name="table" onclick="listner()" value="Человек_Установщик">Человек_Установщик<br>
-                </label>
-                <label>
-                    <input type="radio" name="table" onclick="listner()" value="Устройства_Передатчики">Устройства_Передатчики<br>
-                </label>
-                    <label>
-                    <input type="radio" name="table" onclick="listner()" value="Устройства_Приемники">Устройства_Приемники<br>
-                    </label>
 
-                <label>
-                    <input type="radio" name="table" onclick="listner()" value="Место_Расположения">Место_Расположения<br>
-                    </label>
-                <label>
-                    <input type="radio" name="table" onclick="listner()" value="Организация">Организация<br>
-                </label>
+<script>
+    function check(){
+        let table;
+        let radios = document.getElementsByName("table");
+        for (let i=0; i < radios.length; i++){
+            if (radios[i].checked){
+                table = radios[i].value;
+            }
+        }
+        return table;
+    }
+    function select() {
+        let table = check();
+        let url = "/Select/"+table;
+        $.ajax({
+            url: url,         /* Куда пойдет запрос */
+            method: 'post',             /* Метод передачи (post или get) */
+            dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
+            data: {},     /* Параметры передаваемые в запросе. */
+            success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+                console.log(data);
+                let table = document.createElement("table");
+                if (!document.getElementById("result-table")) {
+                    table.id = "result-table";
+                    let headers = document.createElement("tr");
+                    headers.id = "table-headers";
+                    let s = "";
+                    for (k in data[0]){
+                        s = s + "<th>" + k + "</th>";
+                    }
+                    headers.innerHTML = s;
+                    let header = document.createElement("h1");
+                    header.innerText = "Вывод данных";
+                    document.getElementsByClassName("main")[1].appendChild(header);
+                    document.getElementsByClassName("main")[1].appendChild(table);
+                    table.appendChild(headers);
 
-                <label>
-                    <input type="radio" name="table" onclick="listner()" value="Страны">Страны<br>
-                </label>
-                    <label>
-                    <input type="radio" name="table" onclick="listner()" value="Наблюдаемый">Наблюдаемый<br>
-                    </label>
-                        <label>
-                    <input type="radio" name="table" onclick="listner()" value="Типы_организаций">Типы_организаций<br>
-                        </label>
-                            <label>
-                    <input type="radio" name="table" onclick="listner()" value="Место_установки">Место_установки<br>
-                            </label>
-                                <label>
-                    <input type="radio" name="table" onclick="listner()" value="Типы_установленных_устройств">Типы_установленных_устройств<br>
-                                </label>
-        <button  class="index_button" type="submit" disabled name="submit">valj</button>-->
-
-        <form id="the_form">
-            <input type="submit" name="setter" value="Человек_Установщик">
-            <input type="submit" name="output" value="Устройства_Передатчики">
-            <input type="submit" name="input" value="Устройства_Приемники">
-            <input type="submit" name="locatioin" value="Место_Расположения">
-            <input type="submit" name="organization" value="Организация">
-            <input type="submit" name="countries" value="Страны">
-            <input type="submit" name="look_after" value="Наблюдаемый">
-            <input type="submit" name="org_types" value="Типы_организаций">
-            <input type="submit" name="set_place" value="Место_установки">
-            <input type="submit" name="send" value="Типы_установленных_устройств">
-
-        </form>
-
-<!--<script>
-    $radioButtons = document.getElementsByName("table");
-    $radioButtons.change(function(){
-        var anyRadioButtonHasValue = false;
-
-        // iterate through all radio buttons
-        $radioButtons.each(function(){
-            if(this.checked){
-                // indicate we found a radio button which has a value
-                anyRadioButtonHasValue = true;
-
-                // break out of each loop
-                return false;
+                }
+                for (let i=0; i<data.length; i++){
+                    let s = "";
+                    let row = document.createElement("tr");
+                    for (k in data[0]){
+                        s = s + "<td>" + data[i][k] + "</td>";
+                    }
+                    row.innerHTML = s;
+                    table.appendChild(row);
+                    //insertAfter(row,document.getElementById("table-headers"));
+                }
             }
         });
+    }
 
-        // check if we found any radio button which has a value
-        if(anyRadioButtonHasValue){
-            // enable submit button.
-            $("input[name='submit']").removeAttr("disabled");
-        }
-        else{
-            // else is kind of redundant unless you somehow can clear the radio button value
-            $("input[name='submit']").attr("disabled", "");
-        }
-    });
-</script>-->
+
+
+</script>
 
 
 
 
 
-        <button class="index_button">Показать Данные</button>
-
-
-        <button class="index_button">Добавить</button> <button class="index_button">Редактировать</button> <button class="index_button">Удалить</button>
 
 
 
-    </form>
-
-</div>
-
-<div >
-    <iframe name="result_frame" height="120" width="700" id="result_frame"
-            allowtransparenc frameborder="no" scrolling="no" seamless style="display:none"></iframe>
-
-</div>
 
 
 
-</div>
 
 
+
+
+
+
+
+
+
+
+<!--
 <script>
     formUploader.prepareForm(document.getElementById('the_form'));
 </script>
@@ -187,6 +186,6 @@ formUploader = {
 </script>
 
 
-
+-->
 </body>
 </html>

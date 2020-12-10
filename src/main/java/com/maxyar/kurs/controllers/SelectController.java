@@ -1,6 +1,6 @@
 package com.maxyar.kurs.controllers;
 
-import com.maxyar.kurs.entities.*;
+import com.google.gson.Gson;
 import com.maxyar.kurs.services.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +21,7 @@ public class SelectController {
     private final PlaceDoService placeDoService;
     private final TypesOfCompaniesService typesOfCompaniesService;
     private final TypesOfGadgetsService typesOfGadgetsService;
+    private Gson gson = new Gson();
 
     public SelectController(PeopleService peopleService, CompanyService companyService, CountryService countryService, GadgetsFromService gadgetsFromService,
                          GadgetsToService gadgetsToService, ManDoService manDoService, ManSeeService manSeeService, PlaceComService placeComService,
@@ -39,70 +40,58 @@ public class SelectController {
     }
 
     @PostMapping("/People")
-    public Iterable<People> people() {
-        Iterable<People> list= peopleService.select();
-
-        return list;
+    public String people() {
+        return gson.toJson(peopleService.select());
     }
 
     @PostMapping("/Company")
-    public Iterable<Company> company() {
-        Iterable<Company> list = companyService.select();
-        return list;
+    public String company() {
+        return gson.toJson(companyService.select());
     }
 
     @PostMapping("/Country")
-    public Iterable<Country> country() {
-        Iterable<Country> list = countryService.select();
-        return list;
+    public String country() {
+        return gson.toJson(countryService.select());
     }
 
     @PostMapping("/GadgetsFrom")
-    public Iterable<GadgetsFrom> gadgetsFrom() {
-        Iterable<GadgetsFrom> list = gadgetsFromService.select();
-        return list;
+    public String gadgetsFrom() {
+        return gson.toJson(gadgetsFromService.select());
     }
 
     @PostMapping("/GadgetsTo")
-    public Iterable<GadgetsTo> gadgetsTo() {
-        Iterable<GadgetsTo> list = gadgetsToService.select();
-        return list;
+    public String gadgetsTo() {
+        return gson.toJson(gadgetsToService.select());
     }
 
     @PostMapping("/ManDo")
-    public Iterable<ManDo> manDo() {
-        Iterable<ManDo> list = manDoService.select();
-        return list;
+    public String manDo() {
+        return gson.toJson(manDoService.select());
     }
 
     @PostMapping("/ManSee")
-    public Iterable<ManSee> manSee() {
-        Iterable<ManSee> list = manSeeService.select();
-        return list;
+    public String manSee() {
+        return gson.toJson(manSeeService.select());
     }
 
     @PostMapping("/PlaceCom")
-    public Iterable<PlaceCom> placeCom() {
-        Iterable<PlaceCom> list = placeComService.select();
-        return list;
+    public String placeCom() {
+        return gson.toJson(placeComService.select());
     }
 
     @PostMapping("/PlaceDo")
-    public Iterable<PlaceDo> placeDo() {
-        Iterable<PlaceDo> list = placeDoService.select();
-        return list;
+    public String placeDo() {
+        return gson.toJson(placeDoService.select());
     }
 
     @PostMapping("/TypesOfCompanies")
-    public Iterable<TypesOfCompanies> typesOfCompanies() {
-        Iterable<TypesOfCompanies> list = typesOfCompaniesService.select();
-        return list;
+    public String typesOfCompanies() {
+        return gson.toJson(typesOfCompaniesService.select());
     }
 
     @PostMapping("/TypesOfGadgets")
-    public Iterable<TypesOfGadgets> typesOfGadgets() {
-        Iterable<TypesOfGadgets> list = typesOfGadgetsService.select();
-        return list;
+    public String typesOfGadgets() {
+        return gson.toJson(typesOfGadgetsService.select());
     }
 
 }

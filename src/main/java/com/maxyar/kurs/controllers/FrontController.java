@@ -11,9 +11,13 @@ public class FrontController {
         return "index";
     }
 
-    @GetMapping("/Main")
-    public String mainpage() {
+    @GetMapping("/Table")
+    public String tablepage() {
         return "main";
     }
 
+    @GetMapping("/Function")
+    public String funcpage() {
+        return "functions";
+    }
 }
