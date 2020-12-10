@@ -25,7 +25,7 @@
         <h1>Работа с данными</h1>
         <h1>Какую таблицу выбираем?</h1>
 
-                <label>
+          <!--      <label>
                     <input type="radio" name="table" onclick="listner()" value="Человек_Установщик">Человек_Установщик<br>
                 </label>
                 <label>
@@ -57,7 +57,21 @@
                                 <label>
                     <input type="radio" name="table" onclick="listner()" value="Типы_установленных_устройств">Типы_установленных_устройств<br>
                                 </label>
-        <button  class="index_button" type="submit" disabled name="submit">valj</button>
+        <button  class="index_button" type="submit" disabled name="submit">valj</button>-->
+
+        <form id="the_form">
+            <input type="submit" name="setter" value="Человек_Установщик">
+            <input type="submit" name="output" value="Устройства_Передатчики">
+            <input type="submit" name="input" value="Устройства_Приемники">
+            <input type="submit" name="locatioin" value="Место_Расположения">
+            <input type="submit" name="organization" value="Организация">
+            <input type="submit" name="countries" value="Страны">
+            <input type="submit" name="look_after" value="Наблюдаемый">
+            <input type="submit" name="org_types" value="Типы_организаций">
+            <input type="submit" name="set_place" value="Место_установки">
+            <input type="submit" name="send" value="Типы_установленных_устройств">
+
+        </form>
 
 <!--<script>
     $radioButtons = document.getElementsByName("table");
@@ -111,11 +125,68 @@
 
 
 </div>
+
+
 <script>
-    function listner(){
+    formUploader.prepareForm(document.getElementById('the_form'));
+</script>
+
+
+<script>
+/*    function listner(){
         //TODO: Make buttons not disable
         console.log("Listner works")
+
+    }*/
+formUploader = {
+
+    prepareForm: function(form){
+
+        // Каждая значимая кнопка формы при клике должна создать одноименное hidden поле,
+        // чтобы на сервер передалась информация о том, какая кнопка была кликнута
+        var allFormFields = form.getElementsByTagName('input');
+        for (var i=0; i<allFormFields.length; i++){
+            if(allFormFields[i].type == 'submit' && allFormFields[i].name){
+                allFormFields[i].onclick = function(){
+                    formUploader.createHiddenField(this);
+                }
+            }
+        }
+
+        // Визуализируем форму как отправляемую на сервер на событии onsubmit
+        // (в т.ч. делаем все кнопки неактивными)
+        form.onsubmit = function(){
+            formUploader.setFormLoading(form);
+        }
+
+        // Очищаем визуализацию формы (в т.ч. делаем все кнопки вновь активными)
+        // при уходе со страницы - по глобальному событию onunload
+        window.onunload = function(){
+            formUploader.clearFormLoading(form)
+        }
+    },
+
+    setFormLoading: function(form){
+        // Создаем визуализацию загрузки формы и делаем все кнопки неактивными
+        // disabled=true;
+    },
+
+    clearFormLoading: function(form){
+        // Очищаем форму от визуализации загрузки и возвращаем кнопки в активное состояние
+        // disabled=false;
+    },
+
+    createHiddenField: function(button){
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = button.name;
+        input.value = button.value;
+        button.parentNode.insertBefore(input, button);
     }
+}
 </script>
+
+
+
 </body>
 </html>
