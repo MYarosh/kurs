@@ -1,16 +1,8 @@
 package com.maxyar.kurs;
 
-import com.maxyar.kurs.entities.People;
 import com.maxyar.kurs.repository.PeopleCrudRepository;
-import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
-
-import static io.restassured.RestAssured.given;
 
 
 @SpringBootTest
@@ -18,7 +10,7 @@ class KursApplicationTests {
 
     @Autowired
     private PeopleCrudRepository peopleCrudRepository;
-
+/*
     @Test
     @Transactional
     public void testRep(){
@@ -38,5 +30,5 @@ class KursApplicationTests {
                 .statusCode(HttpStatus.SC_OK).and().extract().body().asString();
         System.out.println(s);
     }
-
+*/
 }
