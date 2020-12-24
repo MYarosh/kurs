@@ -34,24 +34,51 @@
             <input type="radio" name="table" value="PlaceDo">Место_установки<br/><br/>
             <input type="radio" name="table" value="TypesOfGadgets">Типы_установленных_устройств<br/><br/>
 
-            <input type="text" id="" placeholder=""><br/><br/>
-        <button id="select" class="index_button" onclick="select();">Показать Данные</button>
-        <button id="add" class="index_button" onclick="add();">Добавить</button>
-        <button id="update" class="index_button" onclick="update();">Редактировать</button>
-        <button id="delete" class="index_button" onclick="del();">Удалить</button>
-
+    <button id="select" class="index_button" onclick="select();">Показать Данные</button>
+    <button id="add" class="index_button" onclick="add();">Добавить</button>
+    <button id="update" class="index_button" onclick="update();">Редактировать</button>
+    <button id="delete" class="index_button" onclick="del();">Удалить</button>
     <button class="index_button"><a class ="link_style" href="/">Назад</a></button>
+    <button id="send" class="index_button" onclick="send();">Отправить</button>
 
+    <div class="main">
 
-</div>
-<div class="main">
+    </div>
+
+            <input class="input" type="text" name="id" placeholder="id" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="name" placeholder="name" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="surname" placeholder="surname" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="country" placeholder="country" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="danger" placeholder="danger" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="type" placeholder="type" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="description" placeholder="description" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="function" placeholder="function" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="job" placeholder="job" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="company" placeholder="company" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="x" placeholder="x" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="y" placeholder="y" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="z" placeholder="z" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="model" placeholder="model" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="frequency" placeholder="frequency" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="manDo" placeholder="manDo" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="placeDo" placeholder="placeDo" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="gadgets" placeholder="gadgets" hidden="hidden"><br/><br/>
+            <input class="input" type="text" name="place" placeholder="place" hidden="hidden"><br/><br/>
+
 
 </div>
 
 
 <script>
+    function isString(val) {
+        return (typeof val === "string" || val instanceof String);
+    }
+
     function check(){
         let table;
+        for (let k=0; k<document.getElementsByClassName("input").length; k++){
+            document.getElementsByClassName("input")[k].setAttribute("hidden","hidden");
+        }
         let radios = document.getElementsByName("table");
         for (let i=0; i < radios.length; i++){
             if (radios[i].checked){
@@ -60,18 +87,242 @@
         }
         return table;
     }
+
+    function update() {
+        let table = check();
+        let table1 = document.createElement("p");
+        if (document.getElementById("result-table")) {
+            document.getElementById("result-table").remove();
+        }
+        table1.id="result-table";
+        table1.value = "Update";
+        document.getElementsByClassName("main")[1].appendChild(table1);
+        unhid(table);
+    }
+
+    function add() {
+        let table = check();
+        let table1 = document.createElement("p");
+        if (document.getElementById("result-table")) {
+            document.getElementById("result-table").remove();
+        }
+        table1.id="result-table";
+        table1.value = "Add";
+        document.getElementsByClassName("main")[1].appendChild(table1);
+        unhid(table);
+    }
+
+    function del() {
+        let table = check();
+        let table1 = document.createElement("p");
+        if (document.getElementById("result-table")) {
+            document.getElementById("result-table").remove();
+        }
+        table1.id="result-table";
+        table1.value = "Delete";
+        document.getElementsByClassName("main")[1].appendChild(table1);
+        unhid(table);
+    }
+
+    function send() {
+        let table = check();
+        let url = "/"+document.getElementById("result-table").value+"/" + table;
+        if (table === "Company"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {id: document.getElementsByName("id")[0].value, country: document.getElementsByName("country")[0].value, function: document.getElementsByName("function")[0].value, name: document.getElementsByName("name")[0].value, type: document.getElementsByName("type")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "Country"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {country: document.getElementsByName("country")[0].value, danger: document.getElementsByName("danger")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "GadgetsFrom"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {id: document.getElementsByName("id")[0].value, model: document.getElementsByName("model")[0].value, manDo: document.getElementsByName("manDo")[0].value,
+                        placeDo: document.getElementsByName("placeDo")[0].value, type: document.getElementsByName("type")[0].value, frequency: document.getElementsByName("frequency")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "GadgetsTo"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {id: document.getElementsByName("id")[0].value, gadgets: document.getElementsByName("gadgets")[0].value, place: document.getElementsByName("place")[0].value, country: document.getElementsByName("country")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "ManDo"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {id: document.getElementsByName("id")[0].value, job: document.getElementsByName("job")[0].value, country: document.getElementsByName("country")[0].value, company: document.getElementsByName("company")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "ManSee"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {id: document.getElementsByName("id")[0].value, job: document.getElementsByName("job")[0].value, company: document.getElementsByName("company")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "People"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {id : document.getElementsByName("id")[0].value, name: document.getElementsByName("name")[0].value, surname: document.getElementsByName("surname")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "PlaceCom"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {id: document.getElementsByName("id")[0].value, company: document.getElementsByName("company")[0].value, x: document.getElementsByName("x")[0].value, y: document.getElementsByName("y")[0].value, z: document.getElementsByName("z")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "PlaceDo"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {id: document.getElementsByName("id")[0].value, x: document.getElementsByName("x")[0].value, y: document.getElementsByName("y")[0].value, z: document.getElementsByName("z")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "TypesOfCompanies"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {type: document.getElementsByName("type")[0].value, description: document.getElementsByName("description")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }else if (table === "TypesOfGadgets"){
+            $.ajax({
+                url: url,
+                method: 'post',
+                dataType: 'json',
+                data: {type: document.getElementsByName("type")[0].value, description: document.getElementsByName("description")[0].value},
+                success: function (data) {
+                    console.log("123");
+
+                }
+            });
+        }
+    }
+
+    function unhid(table) {
+        if (table === "Company"){
+            document.getElementsByName("id")[0].removeAttribute("hidden");
+            document.getElementsByName("country")[0].removeAttribute("hidden");
+            document.getElementsByName("function")[0].removeAttribute("hidden");
+            document.getElementsByName("name")[0].removeAttribute("hidden");
+            document.getElementsByName("type")[0].removeAttribute("hidden");
+        }else if (table === "Country"){
+            document.getElementsByName("country")[0].removeAttribute("hidden");
+            document.getElementsByName("danger")[0].removeAttribute("hidden");
+        }else if (table === "GadgetsFrom"){
+            document.getElementsByName("id")[0].removeAttribute("hidden");
+            document.getElementsByName("model")[0].removeAttribute("hidden");
+            document.getElementsByName("manDo")[0].removeAttribute("hidden");
+            document.getElementsByName("placeDo")[0].removeAttribute("hidden");
+            document.getElementsByName("type")[0].removeAttribute("hidden");
+            document.getElementsByName("frequency")[0].removeAttribute("hidden");
+        }else if (table === "GadgetsTo"){
+            document.getElementsByName("id")[0].removeAttribute("hidden");
+            document.getElementsByName("gadgets")[0].removeAttribute("hidden");
+            document.getElementsByName("place")[0].removeAttribute("hidden");
+            document.getElementsByName("country")[0].removeAttribute("hidden");
+        }else if (table === "ManDo"){
+            document.getElementsByName("id")[0].removeAttribute("hidden");
+            document.getElementsByName("job")[0].removeAttribute("hidden");
+            document.getElementsByName("country")[0].removeAttribute("hidden");
+            document.getElementsByName("company")[0].removeAttribute("hidden");
+        }else if (table === "ManSee"){
+            document.getElementsByName("id")[0].removeAttribute("hidden");
+            document.getElementsByName("job")[0].removeAttribute("hidden");
+            document.getElementsByName("company")[0].removeAttribute("hidden");
+        }else if (table === "People"){
+            document.getElementsByName("id")[0].removeAttribute("hidden");
+            document.getElementsByName("name")[0].removeAttribute("hidden");
+            document.getElementsByName("surname")[0].removeAttribute("hidden");
+        }else if (table === "PlaceCom"){
+            document.getElementsByName("id")[0].removeAttribute("hidden");
+            document.getElementsByName("company")[0].removeAttribute("hidden");
+            document.getElementsByName("x")[0].removeAttribute("hidden");
+            document.getElementsByName("y")[0].removeAttribute("hidden");
+            document.getElementsByName("z")[0].removeAttribute("hidden");
+        }else if (table === "PlaceDo"){
+            document.getElementsByName("id")[0].removeAttribute("hidden");
+            document.getElementsByName("x")[0].removeAttribute("hidden");
+            document.getElementsByName("y")[0].removeAttribute("hidden");
+            document.getElementsByName("z")[0].removeAttribute("hidden");
+        }else if (table === "TypesOfCompanies"){
+            document.getElementsByName("type")[0].removeAttribute("hidden");
+            document.getElementsByName("description")[0].removeAttribute("hidden");
+        }else if (table === "TypesOfGadgets"){
+            document.getElementsByName("type")[0].removeAttribute("hidden");
+            document.getElementsByName("description")[0].removeAttribute("hidden");
+        }
+    }
+let datt;
     function select() {
         let table = check();
         let url = "/Select/"+table;
         $.ajax({
-            url: url,         /* Куда пойдет запрос */
-            method: 'post',             /* Метод передачи (post или get) */
-            dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-            data: {},     /* Параметры передаваемые в запросе. */
-            success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+            url: url,
+            method: 'post',
+            dataType: 'json',
+            data: {},
+            success: function(data){
                 console.log(data);
+                datt = data;
                 let table = document.createElement("table");
-                if (!document.getElementById("result-table")) {
+                if (document.getElementById("result-table")) {
+                    document.getElementById("result-table").remove();
+                    document.getElementById("output_data").remove();
+                }
                     table.id = "result-table";
                     let headers = document.createElement("tr");
                     headers.id = "table-headers";
@@ -81,21 +332,27 @@
                     }
                     headers.innerHTML = s;
                     let header = document.createElement("h1");
+                    header.setAttribute("id", "output_data");
                     header.innerText = "Вывод данных";
                     document.getElementsByClassName("main")[1].appendChild(header);
                     document.getElementsByClassName("main")[1].appendChild(table);
                     table.appendChild(headers);
-
-                }
                 for (let i=0; i<data.length; i++){
                     let s = "";
                     let row = document.createElement("tr");
                     for (k in data[0]){
-                        s = s + "<td>" + data[i][k] + "</td>";
+                        let j;
+                        for (j in data[i][k]){
+                            break;
+                        }
+                        if (typeof data[i][k] === 'object'){
+                            s = s + "<td>" + data[i][k][j] + "</td>"
+                        }else {
+                            s = s + "<td>" + data[i][k] + "</td>";
+                        }
                     }
                     row.innerHTML = s;
                     table.appendChild(row);
-                    //insertAfter(row,document.getElementById("table-headers"));
                 }
             }
         });
@@ -104,88 +361,5 @@
 
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<script>
-    formUploader.prepareForm(document.getElementById('the_form'));
-</script>
-
-
-<script>
-/*    function listner(){
-        //TODO: Make buttons not disable
-        console.log("Listner works")
-
-    }*/
-formUploader = {
-
-    prepareForm: function(form){
-
-        // Каждая значимая кнопка формы при клике должна создать одноименное hidden поле,
-        // чтобы на сервер передалась информация о том, какая кнопка была кликнута
-        var allFormFields = form.getElementsByTagName('input');
-        for (var i=0; i<allFormFields.length; i++){
-            if(allFormFields[i].type == 'submit' && allFormFields[i].name){
-                allFormFields[i].onclick = function(){
-                    formUploader.createHiddenField(this);
-                }
-            }
-        }
-
-        // Визуализируем форму как отправляемую на сервер на событии onsubmit
-        // (в т.ч. делаем все кнопки неактивными)
-        form.onsubmit = function(){
-            formUploader.setFormLoading(form);
-        }
-
-        // Очищаем визуализацию формы (в т.ч. делаем все кнопки вновь активными)
-        // при уходе со страницы - по глобальному событию onunload
-        window.onunload = function(){
-            formUploader.clearFormLoading(form)
-        }
-    },
-
-    setFormLoading: function(form){
-        // Создаем визуализацию загрузки формы и делаем все кнопки неактивными
-        // disabled=true;
-    },
-
-    clearFormLoading: function(form){
-        // Очищаем форму от визуализации загрузки и возвращаем кнопки в активное состояние
-        // disabled=false;
-    },
-
-    createHiddenField: function(button){
-        var input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = button.name;
-        input.value = button.value;
-        button.parentNode.insertBefore(input, button);
-    }
-}
-</script>
-
-
--->
 </body>
 </html>

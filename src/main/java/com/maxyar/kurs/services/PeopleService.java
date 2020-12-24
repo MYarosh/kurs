@@ -20,7 +20,7 @@ public class PeopleService {
 
     @Transactional
     public void addPeople(People people){
-        People savedpeople = peopleCrudRepository.save(people);
+        People savedpeople = peopleCrudRepository.saveAndFlush(people);
     }
 
     @Transactional
@@ -30,7 +30,7 @@ public class PeopleService {
 
     @Transactional
     public void editPeople(People people){
-        People updatedPeople = peopleCrudRepository.save(people);
+        People updatedPeople = peopleCrudRepository.saveAndFlush(people);
     }
 
     @Transactional

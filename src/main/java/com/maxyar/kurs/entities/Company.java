@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Company {
     @Id
     @Column(name = "id_организации")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "род_деятельности")
     private String function;

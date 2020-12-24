@@ -1,7 +1,7 @@
 package com.maxyar.kurs.repository;
 
 import com.maxyar.kurs.entities.PlaceCom;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PlaceComCrudRepository extends CrudRepository<PlaceCom, Integer> {
+public interface PlaceComCrudRepository extends JpaRepository<PlaceCom, Integer> {
 }

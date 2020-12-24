@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class PlaceDo {
     @Id
     @Column(name = "id_места")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "x")
     private Double x;

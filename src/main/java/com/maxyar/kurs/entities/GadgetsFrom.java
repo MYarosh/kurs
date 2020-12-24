@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class GadgetsFrom {
     @Id
     @Column(name = "id_устройства")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "модель")
     private String model;

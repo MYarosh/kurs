@@ -18,7 +18,7 @@ public class PlaceComService {
 
     @Transactional
     public void addPlaceCom(PlaceCom placeCom){
-        PlaceCom savedPlaceCom = placeComCrudRepository.save(placeCom);
+        PlaceCom savedPlaceCom = placeComCrudRepository.saveAndFlush(placeCom);
     }
 
     @Transactional
@@ -28,7 +28,7 @@ public class PlaceComService {
 
     @Transactional
     public void editPlaceCom(PlaceCom placeCom){
-        PlaceCom editedPlaceCom = placeComCrudRepository.save(placeCom);
+        PlaceCom editedPlaceCom = placeComCrudRepository.saveAndFlush(placeCom);
     }
 
     @Transactional

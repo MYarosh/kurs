@@ -18,7 +18,7 @@ public class TypesOfGadgetsService {
 
     @Transactional
     public void addTypesOfGadgets(TypesOfGadgets type){
-        TypesOfGadgets savedType = typesOfGadgetsCrudRepository.save(type);
+        TypesOfGadgets savedType = typesOfGadgetsCrudRepository.saveAndFlush(type);
     }
 
     @Transactional
@@ -28,7 +28,7 @@ public class TypesOfGadgetsService {
 
     @Transactional
     public void editTypesOfGadgets(TypesOfGadgets type){
-        TypesOfGadgets editedType = typesOfGadgetsCrudRepository.save(type);
+        TypesOfGadgets editedType = typesOfGadgetsCrudRepository.saveAndFlush(type);
     }
 
     @Transactional

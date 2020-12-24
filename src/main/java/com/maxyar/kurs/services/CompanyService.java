@@ -18,7 +18,7 @@ public class CompanyService {
 
     @Transactional
     public void addCompany(Company  company){
-        Company savedCompany = companyCrudRepository.save(company);
+        Company savedCompany = companyCrudRepository.saveAndFlush(company);
     }
 
     @Transactional
@@ -28,7 +28,7 @@ public class CompanyService {
 
     @Transactional
     public void editCompany(Company company){
-        Company editedCompany = companyCrudRepository.save(company);
+        Company editedCompany = companyCrudRepository.saveAndFlush(company);
     }
 
     @Transactional

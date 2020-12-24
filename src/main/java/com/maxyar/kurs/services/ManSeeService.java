@@ -18,7 +18,7 @@ public class ManSeeService {
 
     @Transactional
     public void addManSee(ManSee manSee){
-        ManSee savedManSee = manSeeCrudRepository.save(manSee);
+        ManSee savedManSee = manSeeCrudRepository.saveAndFlush(manSee);
     }
 
     @Transactional
@@ -28,7 +28,7 @@ public class ManSeeService {
 
     @Transactional
     public void editManSee(ManSee manSee){
-        ManSee editedManSee = manSeeCrudRepository.save(manSee);
+        ManSee editedManSee = manSeeCrudRepository.saveAndFlush(manSee);
     }
 
     @Transactional

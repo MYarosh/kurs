@@ -18,7 +18,7 @@ public class CountryService {
 
     @Transactional
     public void addCountry(Country country){
-        Country savedCountry = countryCrudRepository.save(country);
+        Country savedCountry = countryCrudRepository.saveAndFlush(country);
     }
 
     @Transactional
@@ -28,7 +28,7 @@ public class CountryService {
 
     @Transactional
     public void editCountry(Country country){
-        Country editedCountry = countryCrudRepository.save(country);
+        Country editedCountry = countryCrudRepository.saveAndFlush(country);
     }
 
     @Transactional

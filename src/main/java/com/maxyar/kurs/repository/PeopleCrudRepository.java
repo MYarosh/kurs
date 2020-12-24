@@ -1,7 +1,7 @@
 package com.maxyar.kurs.repository;
 
-import com.maxyar.kurs.entities.*;
-import org.springframework.data.repository.CrudRepository;
+import com.maxyar.kurs.entities.People;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PeopleCrudRepository extends CrudRepository<People, Integer> {
+public interface PeopleCrudRepository extends JpaRepository<People, Integer> {
 }

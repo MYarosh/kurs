@@ -18,7 +18,7 @@ public class GadgetsFromService {
 
     @Transactional
     public void addGadgetsFrom(GadgetsFrom gadgetsFrom){
-        GadgetsFrom savedGadgetsFrom = gadgetsFromCrudRepository.save(gadgetsFrom);
+        GadgetsFrom savedGadgetsFrom = gadgetsFromCrudRepository.saveAndFlush(gadgetsFrom);
     }
 
     @Transactional
@@ -28,7 +28,7 @@ public class GadgetsFromService {
 
     @Transactional
     public void editGadgetsFrom(GadgetsFrom gadgetsFrom){
-        GadgetsFrom editedGadgetsFrom = gadgetsFromCrudRepository.save(gadgetsFrom);
+        GadgetsFrom editedGadgetsFrom = gadgetsFromCrudRepository.saveAndFlush(gadgetsFrom);
     }
 
     @Transactional

@@ -1,7 +1,7 @@
 package com.maxyar.kurs.repository;
 
 import com.maxyar.kurs.entities.TypesOfCompanies;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TypesOfCompaniesCrudRepository extends CrudRepository<TypesOfCompanies, String> {
+public interface TypesOfCompaniesCrudRepository extends JpaRepository<TypesOfCompanies, String> {
 }

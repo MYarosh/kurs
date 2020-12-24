@@ -1,7 +1,7 @@
 package com.maxyar.kurs.repository;
 
 import com.maxyar.kurs.entities.ManSee;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ManSeeCrudRepository extends CrudRepository<ManSee, Integer> {
+public interface ManSeeCrudRepository extends JpaRepository<ManSee, Integer> {
 }

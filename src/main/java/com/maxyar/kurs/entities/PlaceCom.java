@@ -15,7 +15,7 @@ import java.util.Collection;
 public class PlaceCom {
     @Id
     @Column(name = "id_места")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToMany
     @JoinColumn(name = "организация")

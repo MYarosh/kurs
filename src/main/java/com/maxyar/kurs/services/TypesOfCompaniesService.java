@@ -18,7 +18,7 @@ public class TypesOfCompaniesService {
 
     @Transactional
     public void addTypesOfCompanies(TypesOfCompanies type){
-        TypesOfCompanies savedType = typesOfCompaniesCrudRepository.save(type);
+        TypesOfCompanies savedType = typesOfCompaniesCrudRepository.saveAndFlush(type);
     }
 
     @Transactional
@@ -28,7 +28,7 @@ public class TypesOfCompaniesService {
 
     @Transactional
     public void editTypesOfCompanies(TypesOfCompanies type){
-        TypesOfCompanies editedType = typesOfCompaniesCrudRepository.save(type);
+        TypesOfCompanies editedType = typesOfCompaniesCrudRepository.saveAndFlush(type);
     }
 
     @Transactional

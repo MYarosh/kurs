@@ -18,7 +18,7 @@ public class ManDoService {
 
     @Transactional
     public void addManDo(ManDo manDo){
-        ManDo savedManDo = manDoCrudRepository.save(manDo);
+        ManDo savedManDo = manDoCrudRepository.saveAndFlush(manDo);
     }
 
     @Transactional
@@ -28,7 +28,7 @@ public class ManDoService {
 
     @Transactional
     public void editManDo(ManDo manDo){
-        ManDo editedManDo = manDoCrudRepository.save(manDo);
+        ManDo editedManDo = manDoCrudRepository.saveAndFlush(manDo);
     }
 
     @Transactional

@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class People {
     @Id
     @Column(name = "id_человека")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "имя")
@@ -23,15 +23,4 @@ public class People {
     @Column(name = "фамилия")
     private String surname;
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public void setSurname(String surname){
-        this.surname = surname;
-    }
 }

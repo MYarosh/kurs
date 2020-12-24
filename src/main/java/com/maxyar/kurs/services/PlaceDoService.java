@@ -18,7 +18,7 @@ public class PlaceDoService {
 
     @Transactional
     public void addPlaceDo(PlaceDo placeDo){
-        PlaceDo savedPlaceDo = placeDoCrudRepository.save(placeDo);
+        PlaceDo savedPlaceDo = placeDoCrudRepository.saveAndFlush(placeDo);
     }
 
     @Transactional
@@ -28,7 +28,7 @@ public class PlaceDoService {
 
     @Transactional
     public void editPlaceDo(PlaceDo placeDo){
-        PlaceDo editedPlaceDo = placeDoCrudRepository.save(placeDo);
+        PlaceDo editedPlaceDo = placeDoCrudRepository.saveAndFlush(placeDo);
     }
 
     @Transactional

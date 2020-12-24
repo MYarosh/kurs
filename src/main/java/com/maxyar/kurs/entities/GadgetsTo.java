@@ -15,7 +15,7 @@ import java.util.Collection;
 public class GadgetsTo {
     @Id
     @Column(name = "id_приемника")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @OneToMany

@@ -1,7 +1,7 @@
 package com.maxyar.kurs.repository;
 
 import com.maxyar.kurs.entities.Country;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CountryCrudRepository extends CrudRepository<Country, String> {
+public interface CountryCrudRepository extends JpaRepository<Country, String> {
 }

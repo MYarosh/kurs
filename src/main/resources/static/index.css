@@ -122,6 +122,22 @@ body{
     padding-right: 4px;
 }
 
+#answer{
+    border-collapse: collapse;
+    border: solid 4px #007765;
+    padding: 0;
+    font-size: 20px;
+}
+#answer td, #answer th{
+    border: solid 2px #007765;
+    text-align: center;
+}
+#answer th{
+    border-bottom: 4px solid #007765;
+    padding-left: 2px;
+    padding-right: 4px;
+}
+
 .warn-radio {
     color: red;
 }
