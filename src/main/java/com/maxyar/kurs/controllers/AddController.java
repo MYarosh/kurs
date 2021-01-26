@@ -42,6 +42,7 @@ public class AddController {
 
     @PostMapping("/People")
     public ResponseEntity<String> people(People people) {
+        System.out.println(people.toString());
         peopleService.addPeople(people);
         return new ResponseEntity<String>("Added", HttpStatus.OK);
     }
