@@ -6,6 +6,7 @@ import com.maxyar.kurs.services.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,7 +45,7 @@ public class UpdateController {
     }
 
     @PostMapping("/People")
-    public ResponseEntity<String> people(People people) {
+    public ResponseEntity<String> people(@RequestBody People people) {
         peopleService.editPeople(people);
         return new ResponseEntity<String>("Updateed", HttpStatus.OK);
     }

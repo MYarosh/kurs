@@ -23,4 +23,9 @@ public class People {
     @Column(name = "фамилия")
     private String surname;
 
+
+    @Override
+    public String toString(){
+        return "id:"+id+", name:"+name+", surname:"+surname;
+    }
 }

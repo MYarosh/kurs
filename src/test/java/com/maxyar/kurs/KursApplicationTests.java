@@ -30,7 +30,6 @@ class KursApplicationTests {
 
     @Test(priority = 0)
     public void testAdd(){
-        System.out.println(people.getName());
         String s = given()
                 .contentType("application/json").body(people)
                 .when().post("http://localhost:36000/Add/People")

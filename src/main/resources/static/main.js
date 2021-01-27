@@ -204,6 +204,7 @@ function send() {
 
             },
             error:function (jqXHR, exception) {
+                console.log("id :"+ document.getElementsByName("id")[0].value+", name:"+ document.getElementsByName("name")[0].value+", surname:"+ document.getElementsByName("surname")[0].value);
                 if (jqXHR.status === 500) {
                     document.getElementById("result-table").innerText = "Проверьте правильность введенных данных";
                 } else if (jqXHR.status === 404) {
