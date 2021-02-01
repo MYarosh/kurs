@@ -12,13 +12,9 @@ public class TypesOfGadgetsService {
     private TypesOfGadgetsCrudRepository typesOfGadgetsCrudRepository;
 
     @Transactional
-    public void testRep(){
-
-    }
-
-    @Transactional
-    public void addTypesOfGadgets(TypesOfGadgets type){
+    public String addTypesOfGadgets(TypesOfGadgets type){
         TypesOfGadgets savedType = typesOfGadgetsCrudRepository.saveAndFlush(type);
+        return savedType.getType();
     }
 
     @Transactional

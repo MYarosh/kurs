@@ -1,6 +1,5 @@
 package com.maxyar.kurs.controllers;
 
-import com.google.gson.Gson;
 import com.maxyar.kurs.entities.*;
 import com.maxyar.kurs.services.*;
 import org.springframework.http.HttpStatus;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/Update")
 public class UpdateController {
-
-    Gson gson = new Gson();
 
     private final PeopleService peopleService;
     private final CompanyService companyService;
@@ -47,67 +44,67 @@ public class UpdateController {
     @PostMapping("/People")
     public ResponseEntity<String> people(@RequestBody People people) {
         peopleService.editPeople(people);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/Company")
-    public ResponseEntity<String> company(Company company) {
+    public ResponseEntity<String> company(@RequestBody Company company) {
         companyService.editCompany(company);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/Country")
-    public ResponseEntity<String> country(Country country) {
+    public ResponseEntity<String> country(@RequestBody Country country) {
         countryService.editCountry(country);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/GadgetsFrom")
-    public ResponseEntity<String> gadgetsFrom(GadgetsFrom gadgetsFrom) {
+    public ResponseEntity<String> gadgetsFrom(@RequestBody GadgetsFrom gadgetsFrom) {
         gadgetsFromService.editGadgetsFrom(gadgetsFrom);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/GadgetsTo")
-    public ResponseEntity<String> gadgetsTo(GadgetsTo gadgetsTo) {
+    public ResponseEntity<String> gadgetsTo(@RequestBody GadgetsTo gadgetsTo) {
         gadgetsToService.editGadgetsTo(gadgetsTo);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/ManDo")
-    public ResponseEntity<String> manDo(ManDo manDo) {
+    public ResponseEntity<String> manDo(@RequestBody ManDo manDo) {
         manDoService.editManDo(manDo);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/ManSee")
-    public ResponseEntity<String> manSee(ManSee manSee) {
+    public ResponseEntity<String> manSee(@RequestBody ManSee manSee) {
         manSeeService.editManSee(manSee);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/PlaceCom")
-    public ResponseEntity<String> placeCom(PlaceCom placeCom) {
+    public ResponseEntity<String> placeCom(@RequestBody PlaceCom placeCom) {
         placeComService.editPlaceCom(placeCom);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/PlaceDo")
-    public ResponseEntity<String> placeDo(PlaceDo placeDo) {
+    public ResponseEntity<String> placeDo(@RequestBody PlaceDo placeDo) {
         placeDoService.editPlaceDo(placeDo);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/TypesOfCompanies")
-    public ResponseEntity<String> typesOfCompanies(TypesOfCompanies type) {
+    public ResponseEntity<String> typesOfCompanies(@RequestBody TypesOfCompanies type) {
         typesOfCompaniesService.editTypesOfCompanies(type);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @PostMapping("/TypesOfGadgets")
-    public ResponseEntity<String> typesOfGadgets(TypesOfGadgets type) {
+    public ResponseEntity<String> typesOfGadgets(@RequestBody TypesOfGadgets type) {
         typesOfGadgetsService.editTypesOfGadgets(type);
-        return new ResponseEntity<String>("Updateed", HttpStatus.OK);
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
 }

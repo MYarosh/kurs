@@ -12,13 +12,9 @@ public class GadgetsToService {
     private GadgetsToCrudRepository gadgetsToCrudRepository;
 
     @Transactional
-    public void testRep(){
-
-    }
-
-    @Transactional
-    public void addGadgetsTo(GadgetsTo gadgetsTo){
+    public String addGadgetsTo(GadgetsTo gadgetsTo){
         GadgetsTo savedGadgetsTo = gadgetsToCrudRepository.saveAndFlush(gadgetsTo);
+        return savedGadgetsTo.getId().toString();
     }
 
     @Transactional

@@ -36,6 +36,7 @@ class KursApplicationTests {
                 .then()
                 .statusCode(HttpStatus.SC_OK).and().extract().body().asString();
         System.out.println(s);
+        people.setId(Integer.valueOf(s));
     }
 
     @Test(priority = 1)

@@ -197,10 +197,11 @@ function send() {
         $.ajax({
             url: url,
             method: 'post',
+            contentType: 'application/json',
             dataType: 'json',
-            data: {id : document.getElementsByName("id")[0].value, name: document.getElementsByName("name")[0].value, surname: document.getElementsByName("surname")[0].value},
+            data:  JSON.stringify({"id" : document.getElementsByName("id")[0].value ,"name" : document.getElementsByName("name")[0].value , "surname" : document.getElementsByName("surname")[0].value}),
             success: function (data) {
-                console.log("123");
+                console.log(data);
 
             },
             error:function (jqXHR, exception) {

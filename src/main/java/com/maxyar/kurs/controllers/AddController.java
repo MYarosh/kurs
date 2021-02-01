@@ -43,69 +43,68 @@ public class AddController {
 
     @PostMapping("/People")
     public ResponseEntity<String> people(@RequestBody People people) {
-        System.out.println(people.toString());
-        peopleService.addPeople(people);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = peopleService.addPeople(people);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/Company")
     public ResponseEntity<String> company(@RequestBody Company company) {
-        companyService.addCompany(company);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = companyService.addCompany(company);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/Country")
     public ResponseEntity<String> country(@RequestBody Country country) {
-        countryService.addCountry(country);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = countryService.addCountry(country);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/GadgetsFrom")
     public ResponseEntity<String> gadgetsFrom(@RequestBody GadgetsFrom gadgetsFrom) {
-        gadgetsFromService.addGadgetsFrom(gadgetsFrom);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = gadgetsFromService.addGadgetsFrom(gadgetsFrom);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/GadgetsTo")
     public ResponseEntity<String> gadgetsTo(@RequestBody GadgetsTo gadgetsTo) {
-        gadgetsToService.addGadgetsTo(gadgetsTo);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = gadgetsToService.addGadgetsTo(gadgetsTo);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/ManDo")
     public ResponseEntity<String> manDo(@RequestBody ManDo manDo) {
-        manDoService.addManDo(manDo);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = manDoService.addManDo(manDo);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/ManSee")
     public ResponseEntity<String> manSee(@RequestBody ManSee manSee) {
-        manSeeService.addManSee(manSee);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = manSeeService.addManSee(manSee);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/PlaceCom")
     public ResponseEntity<String> placeCom(@RequestBody PlaceCom placeCom) {
-        placeComService.addPlaceCom(placeCom);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = placeComService.addPlaceCom(placeCom);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/PlaceDo")
     public ResponseEntity<String> placeDo(@RequestBody PlaceDo placeDo) {
-        placeDoService.addPlaceDo(placeDo);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = placeDoService.addPlaceDo(placeDo);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/TypesOfCompanies")
     public ResponseEntity<String> typesOfCompanies(@RequestBody TypesOfCompanies type) {
-        typesOfCompaniesService.addTypesOfCompanies(type);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = typesOfCompaniesService.addTypesOfCompanies(type);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
     @PostMapping("/TypesOfGadgets")
     public ResponseEntity<String> typesOfGadgets(@RequestBody TypesOfGadgets type) {
-        typesOfGadgetsService.addTypesOfGadgets(type);
-        return new ResponseEntity<String>("Added", HttpStatus.OK);
+        String resp = typesOfGadgetsService.addTypesOfGadgets(type);
+        return new ResponseEntity<String>(resp, HttpStatus.OK);
     }
 
 }

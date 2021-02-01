@@ -12,13 +12,9 @@ public class ManDoService {
     private ManDoCrudRepository manDoCrudRepository;
 
     @Transactional
-    public void testRep(){
-
-    }
-
-    @Transactional
-    public void addManDo(ManDo manDo){
+    public String addManDo(ManDo manDo){
         ManDo savedManDo = manDoCrudRepository.saveAndFlush(manDo);
+        return savedManDo.getId().toString();
     }
 
     @Transactional

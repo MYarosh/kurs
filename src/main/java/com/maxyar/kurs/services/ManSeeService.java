@@ -11,14 +11,11 @@ public class ManSeeService {
     @Autowired
     private ManSeeCrudRepository manSeeCrudRepository;
 
-    @Transactional
-    public void testRep(){
-
-    }
 
     @Transactional
-    public void addManSee(ManSee manSee){
+    public String addManSee(ManSee manSee){
         ManSee savedManSee = manSeeCrudRepository.saveAndFlush(manSee);
+        return savedManSee.getId().toString();
     }
 
     @Transactional

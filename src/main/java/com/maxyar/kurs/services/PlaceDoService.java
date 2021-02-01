@@ -12,13 +12,9 @@ public class PlaceDoService {
     private PlaceDoCrudRepository placeDoCrudRepository;
 
     @Transactional
-    public void testRep(){
-
-    }
-
-    @Transactional
-    public void addPlaceDo(PlaceDo placeDo){
+    public String addPlaceDo(PlaceDo placeDo){
         PlaceDo savedPlaceDo = placeDoCrudRepository.saveAndFlush(placeDo);
+        return savedPlaceDo.getId().toString();
     }
 
     @Transactional

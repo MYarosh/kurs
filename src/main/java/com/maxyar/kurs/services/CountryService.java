@@ -11,14 +11,11 @@ public class CountryService {
     @Autowired
     private CountryCrudRepository countryCrudRepository;
 
-    @Transactional
-    public void testRep(){
-
-    }
 
     @Transactional
-    public void addCountry(Country country){
+    public String addCountry(Country country){
         Country savedCountry = countryCrudRepository.saveAndFlush(country);
+        return savedCountry.getCountry();
     }
 
     @Transactional

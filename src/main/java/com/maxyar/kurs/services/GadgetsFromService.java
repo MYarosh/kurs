@@ -11,14 +11,11 @@ public class GadgetsFromService {
     @Autowired
     private GadgetsFromCrudRepository gadgetsFromCrudRepository;
 
-    @Transactional
-    public void testRep(){
-
-    }
 
     @Transactional
-    public void addGadgetsFrom(GadgetsFrom gadgetsFrom){
+    public String addGadgetsFrom(GadgetsFrom gadgetsFrom){
         GadgetsFrom savedGadgetsFrom = gadgetsFromCrudRepository.saveAndFlush(gadgetsFrom);
+        return savedGadgetsFrom.getId().toString();
     }
 
     @Transactional

@@ -19,8 +19,9 @@ public class PeopleService {
     }
 
     @Transactional
-    public void addPeople(People people){
+    public String addPeople(People people){
         People savedpeople = peopleCrudRepository.saveAndFlush(people);
+        return savedpeople.getId().toString();
     }
 
     @Transactional

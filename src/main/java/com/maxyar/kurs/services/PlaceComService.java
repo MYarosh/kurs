@@ -11,14 +11,11 @@ public class PlaceComService {
     @Autowired
     private PlaceComCrudRepository placeComCrudRepository;
 
-    @Transactional
-    public void testRep(){
-
-    }
 
     @Transactional
-    public void addPlaceCom(PlaceCom placeCom){
+    public String addPlaceCom(PlaceCom placeCom){
         PlaceCom savedPlaceCom = placeComCrudRepository.saveAndFlush(placeCom);
+        return savedPlaceCom.getId().toString();
     }
 
     @Transactional

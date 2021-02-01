@@ -12,13 +12,9 @@ public class TypesOfCompaniesService {
     private TypesOfCompaniesCrudRepository typesOfCompaniesCrudRepository;
 
     @Transactional
-    public void testRep(){
-
-    }
-
-    @Transactional
-    public void addTypesOfCompanies(TypesOfCompanies type){
+    public String addTypesOfCompanies(TypesOfCompanies type){
         TypesOfCompanies savedType = typesOfCompaniesCrudRepository.saveAndFlush(type);
+        return savedType.getType();
     }
 
     @Transactional

@@ -11,14 +11,11 @@ public class CompanyService {
     @Autowired
     private CompanyCrudRepository companyCrudRepository;
 
-    @Transactional
-    public void testRep(){
-
-    }
 
     @Transactional
-    public void addCompany(Company  company){
+    public String addCompany(Company  company){
         Company savedCompany = companyCrudRepository.saveAndFlush(company);
+        return savedCompany.getId().toString();
     }
 
     @Transactional
